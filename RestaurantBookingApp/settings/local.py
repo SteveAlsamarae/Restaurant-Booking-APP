@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = ["*"]
 
-THIRD_PARTY_APPS += [
+INSTALLED_APPS += [
     "django_extensions",
     "debug_toolbar",
 ]

@@ -4,6 +4,8 @@ core.python*
 env.py
 node_modules/
 cloudinary_python.txt
+**/migrations/*
+!**/migrations/__init__.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -67,6 +69,7 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+
 
 # Flask stuff:
 instance/

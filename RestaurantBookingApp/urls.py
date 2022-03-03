@@ -8,7 +8,9 @@ urlpatterns = [
     # core
     path("admin/", admin.site.urls),
     # 3rd parties
+    path("accounts/", include("allauth.urls")),
     # local
+    path("profile/", include("users.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
