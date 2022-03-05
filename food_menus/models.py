@@ -7,11 +7,12 @@ from django_resized import ResizedImageField
 
 
 FOOD_ITEM_VALIDATOR = RegexValidator(
-    r"^[, a-zA-Z]*$", "Enter comma separated items. (use space to seperate two items)"
+    r"^[, a-zA-Z]*$",
+    "Enter comma separated items. (use space to seperate two-word items)",
 )
 
 
-class Menu(models.Model):
+class MenuModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     menu_image = ResizedImageField(
         size=[400, 500],
@@ -23,7 +24,7 @@ class Menu(models.Model):
     )
     name = models.CharField(max_length=120)
     food_items = models.CharField(max_length=300, validators=[FOOD_ITEM_VALIDATOR])
-    price = models.IntegerField(max_length=10, verbose_name="Price")
+    price = models.IntegerField(verbose_name="Price")
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -35,12 +36,12 @@ class Menu(models.Model):
     def save(self, *args, **kwargs):
         if self.food_items:
             self.food_items = self.food_items.lower()
-        super(Menu, self).save(*args, **kwargs)
+        super(MenuModel, self).save(*args, **kwargs)
 
     # delete menu image too when menu is deleted
     def delete(self, *args, **kwargs):
         self.menu_image.delete()
-        super(Menu, self).delete(*args, **kwargs)
+        super(MenuModel, self).delete(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("food-menu", kwargs={"id": self.id})

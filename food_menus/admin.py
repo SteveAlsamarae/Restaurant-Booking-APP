@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Menu
+from .models import MenuModel
 
 
 class MenuAdmin(admin.ModelAdmin):
@@ -10,4 +10,4 @@ class MenuAdmin(admin.ModelAdmin):
 
 
 # Register menu model to admin panel.
-admin.site.register(Menu, MenuAdmin)
+admin.site.register(MenuModel, MenuAdmin)
