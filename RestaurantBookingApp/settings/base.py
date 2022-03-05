@@ -37,6 +37,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "users.apps.UsersConfig",
     "food_menus.apps.FoodMenusConfig",
+    "reservation.apps.ReservationConfig",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

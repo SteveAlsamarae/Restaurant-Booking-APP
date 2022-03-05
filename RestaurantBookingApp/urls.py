@@ -12,6 +12,7 @@ urlpatterns = [
     # local
     path("profile/", include("users.urls")),
     path("menus/", include("food_menus.urls")),
+    path("reservations/", include("reservation.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
