@@ -3,6 +3,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 
+from reservation.views import index_view
+
 
 urlpatterns = [
     # core
@@ -10,6 +12,8 @@ urlpatterns = [
     # 3rd parties
     path("accounts/", include("allauth.urls")),
     # local
+    path("", index_view, name="index"),
+    path("home/", index_view, name="home"),
     path("profile/", include("users.urls")),
     path("menus/", include("food_menus.urls")),
     path("reservations/", include("reservation.urls")),

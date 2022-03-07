@@ -1,0 +1,36 @@
+<div id="preloader">
+    <div data-loader="circle-side"></div>
+</div><!-- /Page Preload -->
+            
+<header class="header header_in is_sticky clearfix element_to_stick">
+    <div class="layer"></div><!-- Opacity Mask Menu Mobile -->
+    <div class="container-fluid">
+    <div id="logo">
+        <a href="{% url 'index' %}">
+            <h4>RestaurantX</h4>
+        </a>
+    </div>
+    <!-- /top_menu -->
+    <a href="#0" class="open_close">
+        <i class="icon_menu"></i><span>Menu</span>
+    </a>
+    <nav class="main-menu">
+        <div id="header_menu">
+            <a href="#0" class="open_close">
+                <i class="icon_close"></i><span>Menu</span>
+            </a>
+            <a href="{% url 'index' %}">
+                <h4>RestaurantX</h4>
+            </a>
+        </div>
+        <ul>
+            <li><a href="#0">Home</a></li>
+            <li><a href="#1">Food Menu</a></li>
+            <li><a href="#2">Contact Us</a></li>
+            <li><a href="{% url 'account_login' %}" class="btn_1 text-white">Login</a></li>
+            <li><a href="{% url 'account_signup' %}" class="btn_1 text-white" style="background: #3c4c49;">Signup</a></li>
+        </ul>
+    </nav>
+</div>
+</header>
+<!-- /header -->

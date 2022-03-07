@@ -12,6 +12,11 @@ from .forms import CreateRestaurantForm, CreateTableForm
 # - authenticate resturant admin
 # - check all views work fine
 
+
+def index_view(request):
+    return render(request, "pages/index.html")
+
+
 # FIXME: get and clean data from form
 def create_restaurant_view(request):
     if request.method == "POST":
