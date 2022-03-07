@@ -1,11 +1,22 @@
+from lib2to3.pgen2.token import NAME
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 
 from django_resized import ResizedImageField
 
 
+PHONE_NUMBER_VALIDATOR = RegexValidator(r"^[0-9]{11}$", "Enter a valid phone number.")
+NAME_VALIDATOR = RegexValidator(
+    r"^[a-zA-Z ]*$", "Your name should not contain any special character."
+)
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    name = models.CharField(
+        default="your-name", max_length=100, validators=[NAME_VALIDATOR]
+    )
     avatar = ResizedImageField(
         size=[300, 300],
         crop=["middle", "center"],
@@ -16,6 +27,9 @@ class UserProfile(models.Model):
         verbose_name="avatar",
         blank=True,
         null=True,
+    )
+    phone = models.CharField(
+        default="010101010101", max_length=11, validators=[PHONE_NUMBER_VALIDATOR]
     )
 
     def __str__(self):
