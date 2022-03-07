@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Sign Up
+{% endblock title %}
+
+{% block content %}
+<main style="margin-top:140px;">
+  <div class="container margin_60_40">
+      <h4 class="mb_5 pb-3 text-center">Sign Up</h4>
+      <div class="row d-flex justify-content-md-center">
+          <div class="col-lg-6 col-md-6 add_bottom_25">
+              <form method="post" id="id_signup" autocomplete="off">
+                  {% csrf_token %}
+                  {{form|crispy}}
+                  <input type="hidden" name="{{ redirect_field_name }}" value="/profile/update/" />
+                  <div class="form-group text-center">
+                      <input class="btn_1" type="submit" value="Signup" id="submit-contact">
+                  </div>
+              </form>
+              
+          </div>
+      </div>
+  </div>
+</main>
+{% endblock %}

@@ -33,7 +33,6 @@ THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
 ]
-
 LOCAL_APPS = [
     "users.apps.UsersConfig",
     "food_menus.apps.FoodMenusConfig",
@@ -63,6 +62,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = "index"
+ACCOUNT_EMAIL_REQUIRED = True
 
 # SOCIALACCOUNT_PROVIDERS = {
 #     'google': {
