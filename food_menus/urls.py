@@ -10,6 +10,6 @@ from .views import (
 urlpatterns = [
     path("all/", MenuListView.as_view(), name="menu_list"),
     path("create/", MenuCreateView.as_view(), name="menu_create"),
-    path("<int:id>/update/", MenuUpdateView.as_view(), name="menu_update"),
-    path("<int:id>/delete/", MenuDeleteView.as_view(), name="menu_delete"),
+    path("<str:pk>/update/", MenuUpdateView.as_view(), name="menu_update"),
+    path("<str:pk>/delete/", MenuDeleteView.as_view(), name="menu_delete"),
 ]

@@ -8,13 +8,10 @@ from .models import MenuModel
 from .forms import MenuForm
 
 
-class MenuListView(LoginRequiredMixin, ListView):
+class MenuListView(ListView):
     model = MenuModel
-    template_name = "food_menus/menu_list.html"
     context_object_name = "menus"
-
-    def get_queryset(self):
-        return MenuModel.objects.filter(user=self.request.user)
+    template_name = "food_menus/menu_list.html"
 
 
 class MenuCreateView(SuccessMessageMixin, CreateView):

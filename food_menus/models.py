@@ -44,11 +44,11 @@ class MenuModel(models.Model):
         super(MenuModel, self).delete(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("food-menu", kwargs={"id": self.id})
+        return reverse("food_menu", kwargs={"id": self.id})
 
     @property
     def get_comma_seperated_food_items(self):
-        return self.food_items.split(",")
+        return ", ".join([item.strip() for item in self.food_items.split(",")])
 
     @property
     def get_menu_image_url(self):
