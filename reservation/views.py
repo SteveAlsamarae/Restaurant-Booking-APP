@@ -1,8 +1,12 @@
-from django.utils.dateparse import parse_datetime
-from django.shortcuts import render, redirect, get_object_or_404
+import datetime
+
+from django.utils.dateparse import parse_datetime, parse_time
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.utils import timezone
 
+from food_menus.models import MenuModel
 from .models import RestaurantModel, TableModel, ReservationModel
 from .forms import CreateRestaurantForm, CreateTableForm
 
@@ -14,7 +18,8 @@ from .forms import CreateRestaurantForm, CreateTableForm
 
 
 def index_view(request):
-    return render(request, "pages/index.html")
+    food_menus = MenuModel.objects.all()[:10]
+    return render(request, "pages/index.html", {"food_menus": food_menus})
 
 
 # FIXME: get and clean data from form
@@ -96,19 +101,53 @@ def delete_table_view(request, table_id):
     return redirect("/")
 
 
-# FIXME: get and clean data from form
-def make_reservation_view(request, table_id):
-    table = get_object_or_404(TableModel, id=table_id)
+def make_reservation_view(request):
+    tables = TableModel.objects.all()
+    times = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
     if request.method == "POST":
-        reservation = ReservationModel()
-        reservation.table = table
-        reservation.start_time = parse_datetime(request.POST["start_time"])
-        reservation.end_time = parse_datetime(request.POST["end_time"])
-        reservation.save()
-        messages.success(request, "Reservation is made successfully")
-        return redirect("/")
+        date = request.POST["date"]
+        time = request.POST["time"]
+        table_code = request.POST["table_size"]
+
+        customer = request.user
+        table = TableModel.objects.filter(table_number=table_code).first()
+        parsed_date = datetime.datetime.strptime(date, "%m/%d/%Y").date()
+        parsed_time = parse_time(time)
+
+        if parsed_date >= timezone.now().date():
+            if ReservationModel.objects.filter(
+                customer=customer,
+                table=table,
+                reservation_date=parsed_date,
+                reservation_time=parsed_time,
+            ).exists():
+                messages.error(
+                    request, "This table is already reserved for the date or time."
+                )
+                return redirect("make_reservation")
+            else:
+                reservation = ReservationModel.objects.create(
+                    customer=customer,
+                    table=table,
+                    reservation_date=parsed_date,
+                    reservation_time=parsed_time,
+                )
+                reservation.save()
+                return render(
+                    request,
+                    "reservation/confirm.html",
+                    {"date": date, "time": time, "table": table_code},
+                )
+        else:
+            messages.error(request, "You can't reserve a table in the past!")
+            return redirect("make_reservation")
+
     else:
-        return render(request, "reservation/make_reservation.html", {"table": table})
+        return render(
+            request,
+            "reservation/make_reservation.html",
+            {"tables": tables, "available_times": times},
+        )
 
 
 # FIXME: get and clean data from form for update view
