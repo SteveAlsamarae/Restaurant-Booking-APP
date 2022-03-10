@@ -20,7 +20,7 @@
                                         Enjoy great ambience with our restaurant
                                     </p>
                                     <div class="owl-slide-animated owl-slide-cta">
-                                        <a class="btn_1" href="#" role="button">Book now</a></div>
+                                        <a class="btn_1" href="{% url 'make_reservation' %}" role="button">Book now</a></div>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                         <small>Special Offer</small>
                         <h3>Burgher Menu $18 only</h3>
                         <p>Hamburgher, Chips, Mix Sausages, Beer, Muffin</p>
-                        <a href="reservations.html" class="btn_1">Book now</a>
+                        <a href="{% url 'make_reservation' %}" class="btn_1">Book now</a>
                     </div>
                     <figure class="d-none d-lg-block"><img src="https://images.pexels.com/photos/3616956/pexels-photo-3616956.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="burger" width="420" height="580" class="img-fluid"></figure>
                 </div>
@@ -73,20 +73,21 @@
             <!-- row -->
             <div class="row magnific-gallery homepage add_bottom_25">
             <!-- food menu -->
+            {% for menu in food_menus %}
                 <div class="col-lg-6" data-cue="slideInUp">
                     <div class="menu_item">
                         <figure>
-                            <a href="img/menu_items/large/11.jpg" title="Soft shell crab" data-effect="mfp-zoom-in">
-                                <img src="img/menu_items/menu_items_placeholder.png" data-src="img/menu_items/11.jpg" class="lazy" alt="">
+                            <a href="{{menu.get_menu_image_url}}" title="{{menu.name}}" data-effect="mfp-zoom-in">
+                                <img src="{{menu.get_menu_image_url}}" data-src="{{menu.get_menu_image_url}}" class="lazy" alt="">
                             </a>
                         </figure>
                         <div class="menu_title">
-                            <h3>Soft shell crab</h3><em>$14</em>
+                            <h3>{{menu.name}}</h3><em>{{menu.get_price_in_dollars}}</em>
                         </div>
-                        <p>Chicken, Potato, Salad</p>
+                        <p>{{menu.get_comma_seperated_food_items}}</p>
                     </div>
                 </div>
-                <!-- food menu  -->
+            {% endfor %}
             </div>
             <!-- /row -->
             <p class="text-center"><a href="#0" class="btn_1 outline" data-cue="zoomIn">Download Menu</a></p>

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="pattern_2">
+        <div class="container margin_120_100 pb-0">
+            <div class="row justify-content-center">
+                <div class="container">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{% if message.tags == "error" %}danger {% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                      {{message}}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                <div class="col-lg-6 col-md-8" data-cue="slideInUp">
+                    <div class="main_title">
+                        <span><em></em></span>
+                        <h2>Reserve a table</h2>
+                        <p>or Call us at 0000 1234567</p>
+                    </div>
+                    <div id="wizard_container">
+                        <form id="booking_form" method="POST">
+                            {% csrf_token %}
+                            <input id="website" name="website" type="text" value="">
+                            <div id="middle-wizard">
+                                <div class="step">
+                                    <h3 class="main_question"><strong>1/3</strong> Please Select a date</h3>
+                                    <div class="form-group">
+                                        <input type="hidden" name="date" id="datepicker_field" class="required">
+                                    </div>
+                                    <div id="DatePicker"></div>
+                                </div>
+                                <!-- /step-->
+                                <div class="step">
+                                    <h3 class="main_question"><strong>2/3</strong> Select time and guests</h3>
+                                    <div class="step_wrapper">
+                                        <h4>Time</h4>
+                                        <div class="radio_select add_bottom_15">
+                                            <ul>
+                                                {% for time in available_times %}
+                                                <li>
+                                                    <input type="radio" id="time_{{ forloop.counter }}" name="time" value="{{time}}" class="required">
+                                                    
+                                                    <label for="time_{{ forloop.counter }}">
+                                                        <span aria-hidden="true" class="icon_clock_alt"></span>
+                                                        {{time}}
+                                                    </label>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- /step_wrapper -->
+                                    <div class="step_wrapper">
+                                        <h4>Select a table size</h4>
+                                        <div class="radio_select">
+                                            <ul>
+                                                {% for table in tables %}
+                                                <li>
+                                                    <input type="radio" id="table_size_{{table.table_number}}" name="table_size" value="{{table.table_number}}" class="required">
+                                                    <label for="table_size_{{table.table_number}}"> 
+                                                        <span aria-hidden="true" class="icon_group"></span> &nbsp; {{table.seats}}
+                                                        <em style="background:#f2f3f3;color:#002222">#{{table.table_number}}</em> 
+                                                        </label>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /step-->
+                                <div class="submit step">
+                                    <h3 class="main_question"><strong>3/3</strong> Please fill with your details</h3>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="message" placeholder="Please provide any additional info"></textarea>
+                                    </div>
+                                    <div class="form-group terms">
+                                        <label class="container_check">Please accept our <a href="#" data-toggle="modal" data-target="#terms-txt">Terms and conditions</a>
+                                            <input type="checkbox" name="terms" value="Yes" class="required">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- /step-->
+                            </div>
+                            <!-- /middle-wizard -->
+                            <div id="bottom-wizard">
+                                <button type="button" name="backward" class="backward">Prev</button>
+                                <button type="button" name="forward" class="forward">Next</button>
+                                <button type="submit" name="process" class="submit">Submit</button>
+                            </div>
+                            <!-- /bottom-wizard -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	</main>
+{% endblock %}
