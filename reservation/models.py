@@ -22,22 +22,19 @@ class RestaurantModel(models.Model):
     def get_tables_for_a_date(self, date):
         return self.tables.filter(date=date)
 
-    @property
-    def get_available_tables(self):
-        return self.tables.filter(is_available=True)
-
 
 class TableModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     restaurant = models.ForeignKey(
         RestaurantModel, on_delete=models.CASCADE, related_name="tables"
     )
-    table_number = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+    table_number = models.PositiveIntegerField(
+        validators=[MinValueValidator(1)], unique=True
+    )
     seats = models.PositiveIntegerField(validators=[MinValueValidator(1)])
-    is_table_available = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"Table #{self.number}"
+        return f"Table #{self.table_number}"
 
     @property
     def get_table_number(self):
@@ -47,7 +44,10 @@ class TableModel(models.Model):
 class ReservationModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     customer = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
-    tables = models.ManyToManyField(TableModel, related_name="reservations")
+    table = models.ForeignKey(
+        TableModel, related_name="reservations", on_delete=models.CASCADE,
+        blank=True, null=True
+    )
     reservation_date = models.DateField(null=True)
     reservation_time = models.TimeField(null=True)
     created_on = models.DateTimeField(auto_now_add=True)
