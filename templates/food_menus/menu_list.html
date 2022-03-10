@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}
+    Food Menu
+{% endblock title %}    
+
+{% block content %}
+
+<main>
+    <div class="hero_single inner_pages background-image" data-background="url(https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80)">
+        <div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-9 col-lg-10 col-md-8">
+                        <h1>Food Menu</h1>
+                        <p>Enjoy delcious foods and great ambience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="frame white"></div>
+    </div>
+    
+    <div class="pattern_2">
+        <div class="container margin_60_40" data-cues="slideInUp">
+            <div class="main_title center" data-cue="slideInUp">
+                <span><em></em></span>
+                <h2>Main Dishes</h2>
+                <p>Enjoy fresh and tasty food</p>
+            </div>
+            <div class="row add_bottom_25 magnific-gallery">
+                {% for menu in menus %}
+                <div class="col-lg-6" data-cue="slideInUp">
+                    <div class="menu_item">
+                        <figure>
+                            <a href="{{menu.get_menu_image_url}}" title="{{menu.name}}" data-effect="mfp-zoom-in">
+                                <img src="{{menu.get_menu_image_url}}" data-src="{{menu.get_menu_image_url}}" class="lazy" alt="">
+                            </a>
+                        </figure>
+                        <div class="menu_title">
+                            <h3>
+                                {{menu.name}}</h3><em>{{menu.get_price_in_dollars}}</em>
+                        </div>
+                        <p>{{menu.get_comma_seperated_food_items}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="banner lazy" data-bg="url(https://images.unsplash.com/photo-1596649299486-4cdea56fd59d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80)">
+                <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                    <div>
+                        <small>Special Offer</small>
+                        <h3>Burgher Menu $10 only</h3>
+                        <p>Hamburgher, Chips, Mix Sausages, Beer, Muffin</p>
+                        <a href="reservations.html" class="btn_1">Book a table</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

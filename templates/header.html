@@ -24,8 +24,8 @@
             </a>
         </div>
         <ul>
-            <li><a href="#0">Home</a></li>
-            <li><a href="#1">Food Menu</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'menu_list' %}">Food Menu</a></li>
             <li><a href="#2">Contact Us</a></li>
             <li><a href="{% url 'account_login' %}" class="btn_1 text-white">Login</a></li>
             <li><a href="{% url 'account_signup' %}" class="btn_1 text-white" style="background: #3c4c49;">Signup</a></li>
