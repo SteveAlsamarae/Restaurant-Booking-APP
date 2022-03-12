@@ -27,8 +27,24 @@
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'menu_list' %}">Food Menu</a></li>
             <li><a href="#2">Contact Us</a></li>
+            {% if request.user.is_authenticated %}
+            <li class="submenu mr-md-5 pr-md-5">
+                <a href="#0" class="show-submenu">
+                    <img 
+                    src="https://pixlok.com/wp-content/uploads/2021/03/default-user-profile-picture.jpg" 
+                    alt="profile picture" height=35px width=35px 
+                    style="border-radius:50%">
+                </a>
+                <ul>
+                    <li><a href="{% url 'user_reservations' %}">My Reservations</a></li>
+                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                </ul>
+            </li>
+            
+            {% else %}
             <li><a href="{% url 'account_login' %}" class="btn_1 text-white">Login</a></li>
             <li><a href="{% url 'account_signup' %}" class="btn_1 text-white" style="background: #3c4c49;">Signup</a></li>
+            {% endif %}
         </ul>
     </nav>
 </div>
