@@ -7,6 +7,12 @@ cloudinary_python.txt
 **/migrations/*
 !**/migrations/__init__.py
 
+#project specefic
+media/avatars/**
+!media/avatars/.gitkeep
+media/menu_images/**
+!media/menu_images/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
