@@ -1,9 +1,11 @@
+import imp
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 
-from reservation.views import index_view
+from reservation.views import index_view, admin_login_view
+from contact.views import contact_us_view
 
 
 urlpatterns = [
@@ -14,6 +16,8 @@ urlpatterns = [
     # local
     path("", index_view, name="index"),
     path("home/", index_view, name="home"),
+    path("contact/", contact_us_view, name="contact_us"),
+    path("radmin/login", admin_login_view, name="radmin_login"),
     path("profile/", include("users.urls")),
     path("menus/", include("food_menus.urls")),
     path("reservations/", include("reservation.urls")),
