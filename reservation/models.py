@@ -5,9 +5,6 @@ from django.contrib.auth.models import User
 import uuid
 
 
-RESTAURANT_HOURS = 9
-
-
 class RestaurantModel(models.Model):
     name = models.CharField(max_length=200)
     opening_hour = models.TimeField()
@@ -43,10 +40,11 @@ class TableModel(models.Model):
 
 class ReservationModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    customer = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    customer = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="reservations"
+    )
     table = models.ForeignKey(
-        TableModel, related_name="reservations", on_delete=models.CASCADE,
-        blank=True, null=True
+        TableModel, related_name="reservations", on_delete=models.CASCADE
     )
     reservation_date = models.DateField(null=True)
     reservation_time = models.TimeField(null=True)

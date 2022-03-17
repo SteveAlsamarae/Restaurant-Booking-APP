@@ -8,6 +8,10 @@ class CreateRestaurantForm(forms.ModelForm):
     class Meta:
         model = RestaurantModel
         fields = ["name", "opening_hour", "closing_hour", "email", "contact_number"]
+        widgets = {
+            "opening_hour": forms.TimeInput(attrs={"type": "time"}),
+            "closing_hour": forms.TimeInput(attrs={"type": "time"}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(CreateRestaurantForm, self).__init__(*args, **kwargs)
@@ -18,7 +22,7 @@ class CreateRestaurantForm(forms.ModelForm):
 class CreateTableForm(forms.ModelForm):
     class Meta:
         model = TableModel
-        fields = ["restaurant", "table_number", "seats"]
+        fields = ["table_number", "seats"]
 
     def clean_table_number(self):
         table_number = self.cleaned_data.get("table_number")
