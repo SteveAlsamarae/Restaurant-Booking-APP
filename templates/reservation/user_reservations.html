@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="container margin_60_40 mt-5">
+        <div class="row">
+            {% include "_includes/message.html" %}
+            <div class="col-lg-9">
+                <div class="row row_item" data-cue="slideInUp">
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-8">
+                        <h2>My All Reservations</h2>
+                        <hr>
+                        {% if reservations %}
+                        {% for reservation in reservations %}
+                        <div class="reservations" style="background: #f2f3f2;padding: 15px; border-radius: 10px; margin: 15px 0;">
+                            <div class="rating">
+                                Booked at {{ reservation.created_on | date:"H:i" }} on {{ reservation.created_on | date:"d M Y" }} 
+                            </div>
+                            <div class="table-inline" style="display: flex;justify-content: space-between;align-items: center;">
+                                <h3>Table #{{reservation.table.table_number}}</h3>
+                                <a href="{% url 'cancel_reservation' reservation_id=reservation.id %}" class="badge badge-danger p-2">Cancel booking</a>
+                            </div>
+                            
+                            <p style="margin: 0;">
+                                Date: {{ reservation.reservation_date }} <br>
+                                Time: {{ reservation.reservation_time }} <br>
+                                Seats: {{ reservation.table.seats }} people/table
+                            </p>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="alert alert-info">
+                            You have no reservations
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</main>
+{% endblock %}
