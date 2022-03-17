@@ -1,15 +1,17 @@
 from django.urls import path
 
 from .views import (
-    MenuCreateView,
-    MenuDeleteView,
+    radmin_foodmenu_view,
+    add_food_item_view,
+    update_menu_view,
+    delete_menu_view,
     MenuListView,
-    MenuUpdateView,
 )
 
 urlpatterns = [
     path("all/", MenuListView.as_view(), name="menu_list"),
-    path("create/", MenuCreateView.as_view(), name="menu_create"),
-    path("<str:pk>/update/", MenuUpdateView.as_view(), name="menu_update"),
-    path("<str:pk>/delete/", MenuDeleteView.as_view(), name="menu_delete"),
+    path("admin/", radmin_foodmenu_view, name="admin_menu_list"),
+    path("create/", add_food_item_view, name="menu_create"),
+    path("<str:menu_id>/update/", update_menu_view, name="menu_update"),
+    path("<str:menu_id>/delete/", delete_menu_view, name="menu_delete"),
 ]
