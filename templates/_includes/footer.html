@@ -1,4 +1,7 @@
 {% load static %}
+
+{% with request.resolver_match.url_name as view_url %}
+{% if view_url != 'account_login' and view_url != 'account_signup' and view_url != 'account_logout' %}
 <footer>
     <div class="frame black"></div>
     <div class="container">
@@ -14,7 +17,7 @@
                 <div class="footer_wp">
                     <i class="icon_tag_alt"></i>
                     <h3>Reservations</h3>
-                    <p><a href="tel:00000111">+00000111</a><br><a href="#0">mail@restaurantx.com</a></p>
+                    <p><a href="tel:00000111">+00000111</a><br><a href="#0">mail@princess_restaurant.com</a></p>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-6">
@@ -28,12 +31,14 @@
                 </div>
             </div>
         </div>
-        <p class="text-center">© 2022 RestaurantX - All rights reserved</p>
+        <p class="text-center">© 2022 Princess Restaurant - All rights reserved</p>
     </div>
 </footer>
 <!--/footer-->
 
 <div id="toTop"></div><!-- Back to top button -->
+{% endif %}
+{% endwith %}
 
 
 <!-- COMMON SCRIPTS -->

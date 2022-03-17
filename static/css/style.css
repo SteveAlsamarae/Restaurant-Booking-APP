@@ -1,31 +1,4 @@
-/*
-[Table of contents] 
 
-1. SITE STRUCTURE and TYPOGRAPHY
-- 1.1 Typography
-- 1.2 Structure
-- 1.3 Main Menu
-- 1.4 Heros/Above the fold
-
-2. CONTENT
-- 2.1 Home
-- 2.2 Menu Page
-- 2.3 Order food
-- 2.4 Gallery
-- 2.5 Contacts
-- 2.6 Leave a review
-
-3. COMMON
-- 3.1 Spacing
-- 3.2 Misc
-- 3.3 Footer
-- 3.4 Search modal
-- 3.5 Advertise modal
-- 3.6 Cookie bar
-- 3.7 Success submit
-- 3.8 About
-- 3.9 404 Error page
-*/
 /*-------- Preloader --------*/
 #preloader {
   position: fixed;
@@ -395,7 +368,6 @@ a.btn_play:hover {
   background-size: 10px 3px;
 }
 .frame.black {
-  background: url(../img/frame_footer.png) 0 0 repeat-x;
   background-size: 10px 3px;
   top: -3px;
 }
@@ -603,7 +575,7 @@ header.header_in .main-menu > ul > li:hover > a {
     display: block;
     padding: 0;
     background: #fff;
-    min-width: 210px;
+    min-width: 180px;
     -webkit-box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.175);
     -moz-box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.175);
     box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.175);
@@ -823,7 +795,7 @@ header.header_in .main-menu > ul > li:hover > a {
   /* Menu mobile 3rd level */
   .main-menu ul li.submenu ul ul {
     border-left: none;
-    margin: 0 0 0 15px;
+    margin: 0 0 0 10px;
   }
 
   /* Menu mobile left panel */
@@ -1229,7 +1201,6 @@ ul#top_menu li a.search-overlay-menu-btn:before {
 }
 .hero_single.version_2 .opacity-mask h1:before,
 .hero_single.version_2 .opacity-mask h3:before {
-  content: url("../img/divider.svg");
   display: block;
   margin-bottom: 15px;
 }
@@ -1268,7 +1239,6 @@ ul#top_menu li a.search-overlay-menu-btn:before {
   }
 }
 .hero_single.inner_pages h1:before {
-  content: url("../img/divider.svg");
   display: block;
   margin-bottom: 15px;
 }
@@ -1440,7 +1410,6 @@ ul#top_menu li a.search-overlay-menu-btn:before {
   position: absolute;
   right: 20px;
   bottom: 20px;
-  background: url(../img/drag_icon.svg) 0 0 no-repeat;
   width: 50px;
   height: 30px;
   opacity: 0.6;
@@ -1569,90 +1538,7 @@ ul#banners_grid li a.img_container .short_info p {
   margin-bottom: 0;
 }
 
-/* Home video background*/
-.header-video {
-  position: relative;
-  overflow: hidden;
-  background-color: lightgray;
-  height: 580px !important;
-}
-.header-video h1,
-.header-video h3 {
-  color: #fff;
-  line-height: 1;
-  font-size: 48px;
-  font-size: 3rem;
-  margin: 0;
-  font-weight: 500;
-}
-@media (max-width: 767px) {
-  .header-video h1,
-  .header-video h3 {
-    font-size: 36px;
-    font-size: 2.25rem;
-  }
-}
-.header-video p {
-  font-size: 28px;
-  font-size: 1.75rem;
-  font-weight: 300;
-  display: block;
-}
-@media (max-width: 767px) {
-  .header-video p {
-    font-size: 21px;
-    font-size: 1.3125rem;
-  }
-}
 
-#hero_video {
-  position: relative;
-  background-size: cover;
-  color: #fff;
-  width: 100%;
-  height: 100%;
-  z-index: 99;
-}
-
-.header-video video {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-}
-
-#hero_video iframe {
-  height: 100%;
-  width: 100%;
-}
-
-.teaser-video {
-  width: 100%;
-  height: auto;
-}
-
-.header-video--media {
-  width: 100%;
-  height: auto;
-}
-
-@media (max-width: 1024px) {
-  #hero_video {
-    background: #ededed url(../img/slides/slide_home_1.jpg) center center
-      no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .header-video {
-    background: none;
-  }
-}
 .call_section {
   background-position: center center;
   background-repeat: no-repeat;
@@ -2085,90 +1971,6 @@ ul#banners_grid li a.img_container .short_info p {
   background-color: #fff;
 }
 
-/*-------- 2.3 Order pages --------*/
-.box_booking {
-  border: 2px dotted #d2d8dd;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
-  margin-bottom: 25px;
-  background-color: #fff;
-}
-.box_booking .head {
-  text-align: center;
-  padding: 23px 20px 18px 20px;
-  background-color: #f8f8f8;
-  border-bottom: 2px dotted #d2d8dd;
-}
-.box_booking .head h3 {
-  font-size: 24px;
-  font-size: 1.5rem;
-  margin: 0;
-}
-.box_booking .head small {
-  display: block;
-}
-.box_booking .head .offer {
-  color: #e74747;
-  font-weight: 500;
-  font-size: 16px;
-  font-size: 1rem;
-}
-.box_booking .main {
-  padding: 25px;
-}
-.box_booking .main ul {
-  list-style: none;
-  padding: 0;
-}
-.box_booking .main ul li {
-  margin-bottom: 8px;
-}
-.box_booking .main ul li.total {
-  font-size: 18px;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #e74747;
-  text-transform: uppercase;
-}
-.box_booking .main ul li a {
-  padding-left: 30px;
-  color: #444;
-  display: inline-block;
-  position: relative;
-}
-.box_booking .main ul li a:before {
-  font-family: "ElegantIcons";
-  content: "\4f";
-  font-size: 21px;
-  font-size: 1.3125rem;
-  position: absolute;
-  left: 0;
-  top: -2px;
-  line-height: 1;
-}
-.box_booking .main ul li a:hover {
-  color: #e74747;
-}
-.box_booking .main ul li span {
-  float: right;
-  font-weight: 500;
-}
-.box_booking .form-group {
-  margin: 0 0 10px 0;
-}
-.box_booking textarea {
-  height: 130px;
-}
-
-.opt_order {
-  border-top: 1px solid #ededed;
-  border-bottom: 1px solid #ededed;
-  margin-bottom: 20px;
-  padding: 15px 0 5px 0;
-}
-
 /* Menu list */
 .table.cart-list {
   margin-bottom: 30px;
@@ -2440,88 +2242,6 @@ ul#banners_grid li a.img_container .short_info p {
   top: 7px;
   line-height: 1;
 }
-
-/* Order Checkout */
-.box_booking_2 {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
-  margin-bottom: 25px;
-  background-color: #fff;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-}
-.box_booking_2 .head {
-  text-align: center;
-  padding: 23px 20px 18px 20px;
-  background-color: #679888;
-  color: #fff;
-}
-.box_booking_2 .head h3 {
-  font-size: 24px;
-  font-size: 1.5rem;
-  margin: 0;
-  color: #fff;
-}
-.box_booking_2 .head small {
-  display: block;
-}
-.box_booking_2 .head a {
-  color: #fff;
-  text-decoration: underline;
-}
-.box_booking_2 .main {
-  padding: 25px;
-}
-.box_booking_2 .main ul {
-  list-style: none;
-  padding: 0;
-}
-.box_booking_2 .main ul li {
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-.box_booking_2 .main ul li span {
-  float: right;
-  font-weight: 400;
-}
-.box_booking_2 .main ul li.total {
-  font-size: 16px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #e74747;
-  text-transform: uppercase;
-}
-.box_booking_2 .main ul li.total span {
-  font-weight: 600;
-}
-
-.payment_select {
-  background-color: #f0f0f0;
-  padding: 15px 15px 12px 15px;
-  margin-bottom: 20px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  border-radius: 3px;
-}
-.payment_select label {
-  font-size: 16px;
-  display: inline-block;
-  margin-bottom: 0;
-  line-height: 1.4;
-}
-.payment_select i {
-  float: right;
-  font-size: 24px;
-}
-.payment_select#paypal {
-  background: #f0f0f0 url(../img/paypal_2.svg) center right no-repeat;
-}
-
 /* Confirm page */
 #confirm {
   text-align: center;
@@ -2712,48 +2432,6 @@ ul#banners_grid li a.img_container .short_info p {
   color: #111;
 }
 
-iframe.map_contact {
-  border: 0;
-  width: 100%;
-  height: 372px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-/*-------- 2.6 Leave a review --------*/
-.write_review h1 {
-  font-size: 28px;
-  font-size: 1.75rem;
-}
-
-.rating {
-  display: inline-block;
-  position: relative;
-}
-
-.rating-input {
-  display: none;
-}
-
-.rating:hover .rating-star:hover,
-.rating:hover .rating-star:hover ~ .rating-star,
-.rating-input:checked ~ .rating-star {
-  background-position: 0 0;
-}
-
-.rating-star,
-.rating:hover .rating-star {
-  cursor: pointer;
-  float: right;
-  display: block;
-  margin-right: 3px;
-  width: 37px;
-  height: 37px;
-  background: url(../img/stars.svg) 0 -38px;
-}
 
 /*============================================================================================*/
 /* 3. COMMON */
@@ -2845,7 +2523,6 @@ iframe.map_contact {
 }
 
 .pattern_2 {
-  background: url(../img/pattern_menu.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

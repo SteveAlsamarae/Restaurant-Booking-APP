@@ -7,7 +7,7 @@
     <div class="container-fluid">
     <div id="logo">
         <a href="{% url 'index' %}">
-            <h4>RestaurantX</h4>
+            <h4>Princess Restaurant</h4>
         </a>
     </div>
     <!-- /top_menu -->
@@ -20,23 +20,31 @@
                 <i class="icon_close"></i><span>Menu</span>
             </a>
             <a href="{% url 'index' %}">
-                <h4>RestaurantX</h4>
+                <h4>Princess Restaurant</h4>
             </a>
         </div>
         <ul>
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'menu_list' %}">Food Menu</a></li>
-            <li><a href="#2">Contact Us</a></li>
+            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
             {% if request.user.is_authenticated %}
             <li class="submenu mr-md-5 pr-md-5">
                 <a href="#0" class="show-submenu">
-                    <img 
-                    src="https://pixlok.com/wp-content/uploads/2021/03/default-user-profile-picture.jpg" 
+                    <img
+                    {% if user.profile.avatar.url != "/media/default.jpg" %}
+                    src="{{ user.profile.avatar.url }}"
+                    {% else %}
+                    src="https://pixlok.com/wp-content/uploads/2021/03/default-user-profile-picture.jpg"
+                    {% endif %}
                     alt="profile picture" height=35px width=35px 
                     style="border-radius:50%">
                 </a>
                 <ul>
+                    {% if request.user.restaurant_admin.is_active or request.user.is_superuser %}
+                    <li><a href="{% url 'admin_dashboard' %}">Restaurant Admin</a></li>
+                    {% endif %}
                     <li><a href="{% url 'user_reservations' %}">My Reservations</a></li>
+                    <li><a href="{% url 'update_profile' %}">Update Profile</a></li>
                     <li><a href="{% url 'account_logout' %}">Logout</a></li>
                 </ul>
             </li>
