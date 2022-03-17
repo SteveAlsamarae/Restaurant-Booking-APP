@@ -378,12 +378,14 @@ def delete_table_view(request, table_id):
 # =======================================
 @login_required
 def make_reservation_view(request):
+    restaurant = RestaurantModel.objects.all()[0]
     tables = TableModel.objects.all()
     times = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
     if request.method == "POST":
         date = request.POST["date"]
         time = request.POST["time"]
         table_code = request.POST["table_size"]
+        message = request.POST["message"]
 
         customer = request.user
         table = TableModel.objects.filter(table_number=table_code).first()
@@ -407,6 +409,7 @@ def make_reservation_view(request):
                     table=table,
                     reservation_date=parsed_date,
                     reservation_time=parsed_time,
+                    message=message,
                 )
                 reservation.save()
                 return render(
@@ -419,11 +422,12 @@ def make_reservation_view(request):
             return redirect("make_reservation")
 
     else:
-        return render(
-            request,
-            "reservation/make_reservation.html",
-            {"tables": tables, "available_times": times},
-        )
+        context = {
+            "restaurant": restaurant,
+            "tables": tables,
+            "available_times": times,
+        }
+        return render(request, "reservation/make_reservation.html", context=context)
 
 
 @login_required

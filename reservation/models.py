@@ -1,3 +1,4 @@
+from email import message
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.utils import timezone
@@ -46,8 +47,9 @@ class ReservationModel(models.Model):
     table = models.ForeignKey(
         TableModel, related_name="reservations", on_delete=models.CASCADE
     )
-    reservation_date = models.DateField(null=True)
-    reservation_time = models.TimeField(null=True)
+    reservation_date = models.DateField(verbose_name="Reservation Date")
+    reservation_time = models.TimeField(verbose_name="Reservation Time")
+    message = models.TextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
     def is_valid_date(self):
@@ -58,4 +60,4 @@ class ReservationModel(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"{self.customer.username}'s reservation"
+        return f"{self.customer.username}'s reservation for {self.table.get_table_number}"
