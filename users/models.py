@@ -45,6 +45,7 @@ class RestaurantAdmin(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="restaurant_admin"
     )
+    name = models.CharField(max_length=100, validators=[NAME_VALIDATOR])
     avatar = ResizedImageField(
         size=[300, 300],
         crop=["middle", "center"],
@@ -54,7 +55,8 @@ class RestaurantAdmin(models.Model):
         keep_meta=False,
         verbose_name="avatar",
     )
-    role = models.CharField(max_length=10, default="restaurant_admin")
+    role = models.CharField(max_length=20)
+    phone = models.CharField(max_length=11, validators=[PHONE_NUMBER_VALIDATOR])
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -65,3 +67,7 @@ class RestaurantAdmin(models.Model):
         self.avatar.delete()
 
         return super(RestaurantAdmin, self).delete(*args, **kwargs)
+
+    @property
+    def get_admin_avatar_url(self):
+        return self.avatar.url
