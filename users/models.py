@@ -13,9 +13,6 @@ NAME_VALIDATOR = RegexValidator(
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    name = models.CharField(
-        default="your-name", max_length=100, validators=[NAME_VALIDATOR]
-    )
     avatar = ResizedImageField(
         size=[300, 300],
         crop=["middle", "center"],
@@ -27,9 +24,8 @@ class UserProfile(models.Model):
         blank=True,
         null=True,
     )
-    phone = models.CharField(
-        default="010101010101", max_length=11, validators=[PHONE_NUMBER_VALIDATOR]
-    )
+    name = models.CharField(max_length=100, validators=[NAME_VALIDATOR])
+    phone = models.CharField(max_length=11, validators=[PHONE_NUMBER_VALIDATOR])
 
     def __str__(self):
         return f"{self.user.username}'s profile"
