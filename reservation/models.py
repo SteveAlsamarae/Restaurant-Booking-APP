@@ -1,4 +1,3 @@
-from email import message
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.utils import timezone
@@ -15,10 +14,6 @@ class RestaurantModel(models.Model):
 
     def __str__(self):
         return self.name
-
-    @property
-    def get_tables_for_a_date(self, date):
-        return self.tables.filter(date=date)
 
 
 class TableModel(models.Model):
@@ -60,4 +55,6 @@ class ReservationModel(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"{self.customer.username}'s reservation for {self.table.get_table_number}"
+        return (
+            f"{self.customer.username}'s reservation for {self.table.get_table_number}"
+        )
