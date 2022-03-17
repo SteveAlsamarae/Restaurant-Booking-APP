@@ -1,0 +1,24 @@
+{% extends 'restaurant_admin/_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Add Restaurant informations | Admin Dashboard{% endblock title %}
+
+{% block content %}
+<div class="container content-area">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        {% include "_includes/message.html" %}
+        <div class="panel">
+            <form method="post" id="id_login" autocomplete="off">
+                {% csrf_token %}
+                {{form|crispy}}
+                <div class="form-group text-center">
+                    <input class="btn btn-md btn-info btn-outline" type="submit" value="Create" id="submit-contact">
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

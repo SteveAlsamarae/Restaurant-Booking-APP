@@ -1,0 +1,88 @@
+{% extends 'restaurant_admin/_base.html' %} 
+{% load crispy_forms_tags %}
+
+{% block title %}Food Menu{% endblock %}
+
+{% block content %}
+
+<div class="container content-area">
+  {% include "_includes/message.html" %}
+  <div class="row text-center">
+  <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="panel">
+        <div class="m-b-15">
+          <div style="display:flex;justify-content: space-between;align-items: center;">
+            <h6>Food Menu</h6>
+            <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#TableModalCenter">Add Item</a>
+          </div>
+          <hr />
+        </div>
+        <div class="table-responsive">
+          {% if menus %}
+          <table class="table table-bordered">
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Food Items</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+            {% for menu in menus %}
+            <tr>
+              <td>
+                <img src="{{ menu.get_menu_image_url }}" alt="{{ menu.name }}" class="rounded" width="50" height="50">
+              </td>
+              <td>{{ menu.name }}</td>
+              <td>
+                {{ menu.get_comma_seperated_food_items }}
+              </td>
+              <td>
+                  {{ menu.get_price_in_dollars }}
+              </td>
+              <td>
+                  <a href="{% url 'menu_update' menu_id=menu.id %}" class="text-decoration-none text-info">
+                      <span aria-hidden="true" class="icon_pencil-edit"></span>
+                  </a>
+                  &nbsp;
+                  <a href="{% url 'menu_delete' menu_id=menu.id %}" class="text-decoration-none text-danger">
+                      <span aria-hidden="true" class="icon_trash"></span>
+                  </a>
+                
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <h4>No Food Menu Found!</h4>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="TableModalCenter" tabindex="-1" role="dialog" aria-labelledby="TableModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TableModalLongTitle">Add Food Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" id="id_login" autocomplete="off" enctype="multipart/form-data" action="{% url 'menu_create' %}">
+          {% csrf_token %}
+          {{ form|crispy }}
+        </div>
+        <div class="modal-footer form-group">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input class="btn btn-md btn-info" type="submit" value="Add Item" id="submit-contact">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'restaurant_admin/_base.html' %} 
+{% block title %}Upcoming Reservations{% endblock %} 
+
+{% block content %}
+<div class="container content-area">
+  {% include "_includes/message.html" %}
+  <div class="row text-center">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="panel">
+        <div class="m-b-15">
+          <h6 class="text-left">Upcoming Reservations</h6>
+          <hr />
+        </div>
+        <div class="table-responsive">
+          {% if reservations %}
+
+          <table class="table table-bordered">
+            <tr>
+              <th>Reserved By</th>
+              <th>Table No.</th>
+              <th>Seats</th>
+              <th>Time</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+            {% for reservation in reservations %}
+            <tr>
+              <td>{{ reservation.customer.profile.name }}</td>
+              <td>#{{ reservation.table.table_number }}</td>
+              <td>
+                <span aria-hidden="true" class="icon_group"></span>
+                {{ reservation.table.seats }}
+              </td>
+              <td>{{ reservation.reservation_time |time:"h:i A" }}</td>
+              <td>{{ reservation.reservation_date }}</td>
+              <td>
+                <a href="{% url 'cancel_reservation' reservation_id=reservation.id %}" class="text-decoration-none text-danger">
+                  <span aria-hidden="true" class="icon_close_alt"></span>
+                  Cancel
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <h4 class="text-info">No Upcoming Reservations found!</h4>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

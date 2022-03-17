@@ -10,7 +10,7 @@
                     <div class="main_title">
                         <span><em></em></span>
                         <h2>Reserve a table</h2>
-                        <p>or Call us at 0000 1234567</p>
+                        <p>or Call us at {{restaurant.contact_number}}</p>
                     </div>
                     <div id="wizard_container">
                         <form id="booking_form" method="POST">
@@ -25,7 +25,7 @@
                                     <div id="DatePicker"></div>
                                 </div>
                                 <div class="step">
-                                    <h3 class="main_question"><strong>2/3</strong> Select time and guests</h3>
+                                    <h3 class="main_question"><strong>2/3</strong> Select time and table</h3>
                                     <div class="step_wrapper">
                                         <h4>Time</h4>
                                         <div class="radio_select add_bottom_15">
@@ -84,6 +84,5 @@
             </div>
         </div>
     </div>
-
-	</main>
+</main>
 {% endblock %}

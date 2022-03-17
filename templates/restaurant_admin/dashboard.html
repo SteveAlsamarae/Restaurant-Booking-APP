@@ -1,0 +1,151 @@
+{% extends 'restaurant_admin/_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Admin Dashboard{% endblock title %}
+
+{% block content %}
+<div class="container content-area">
+  {% include "_includes/message.html" %}
+  {% if not restaurant %}
+    <h2>You have not added a Restaurant yet. </h2>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <a href="{% url 'create_restaurant' %}" class="btn btn-info btn-lg">Add Restaurant</a>
+      </div>
+    </div>
+  {% else %}
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card border-0 rounded"
+  style="box-shadow: -1px 1px 10px 2px #91a9a121;"
+      >
+        <img
+          class="card-img-top"
+          style="height: 200px"
+          src="https://images.unsplash.com/photo-1560624052-449f5ddf0c31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{restaurant.name}}</h5>
+          <p class="card-text">
+            <strong>Opening Hour: </strong> {{restaurant.opening_hour |time:"h:i A" }} - {{restaurant.closing_hour|time:"h:i A"}}
+            <br />
+            <strong>Email: </strong> {{restaurant.email}}
+            <br />
+            <strong>Phone: </strong> {{restaurant.contact_number}}
+          </p>
+          <p class="card-text"></p>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-footer bg-white">
+          <small class="text-muted">
+            <a href="{% url 'update_restaurant' %}" class="btn btn-block btn-info">Update informations</a>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="panel">
+        <div class="m-b-15">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h6>Tables</h6>
+            <a
+              href="#"
+              class="btn btn-sm btn-info"
+              data-toggle="modal"
+              data-target="#TableModalCenter"
+              >Add table</a
+            >
+          </div>
+          <hr />
+        </div>
+        <div class="table-responsive">
+          {% if tables_n_reservation %}
+          <table class="table table-bordered">
+            <tr>
+              <th>Table No.</th>
+              <th>Seats</th>
+              <th>Next Reservation</th>
+              <th>Action</th>
+            </tr>
+            {% for tup in tables_n_reservation %}
+            <tr>
+              <td>#{{tup.0.table_number}}</td>
+              <td>
+                <span aria-hidden="true" class="icon_group"></span>
+                {{tup.0.seats}}
+              </td>
+              {% if tup.1 %}
+              <td>{{ tup.1.reservation_time|time:"h:i A" }} | {{ tup.1.reservation_date }}</td>
+              {% else %}
+              <td class="text-info">No next reservation</td>
+              {% endif %}
+              <td>
+                <a href="{% url 'update_table' table_id=tup.0.id %}" class="text-decoration-none text-info">
+                  <span aria-hidden="true" class="icon_pencil-edit"></span>
+                </a>
+                &nbsp;
+                <a href="{% url 'delete_table' table_id=tup.0.id %}" class="text-decoration-none text-danger">
+                  <span aria-hidden="true" class="icon_trash"></span>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <h3>You have not added a table yet!</h3>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="TableModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="TableModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TableModalLongTitle">Add a table</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" id="id_login" autocomplete="off" action="{% url 'add_table' %}">
+      <div class="modal-body">
+          {% csrf_token %}
+          {{form|crispy}}
+          <div class="modal-footer">
+            <input class="btn btn-md btn-info btn-outline" type="submit" value="Add" id="submit-contact">
+            <button type="button" class="btn btn-md btn-outline-dark" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

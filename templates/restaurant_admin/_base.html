@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="{% static 'css/bootstrap_v4.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/admin_dash.css' %}">
+
+    {% block title %}{% endblock title %}
+  </head>
+
+  <body>
+    <header class="main-navbar-header">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top theme-color">
+        <div class="menu-toggle-button">
+          <a class="nav-link wave-effect" href="#" id="sidebarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </a>
+        </div>
+        <a class="navbar-brand" href="{% url 'admin_dashboard' %}">Princess Restaurant Admin</a>
+      </nav>
+    </header>
+    <div class="wrapper">
+      {% with request.resolver_match.url_name as view_url %}
+      {% if view_url != "radmin_login" %}
+      <nav id="sidebar" class="nav-sidebar">
+        <ul class="list-unstyled components" id="accordion">
+          <li {% if view_url == "admin_dashboard" %}class="active"{% endif %}>
+            <a href="{% url 'admin_dashboard' %}" class="wave-effect">
+              <span aria-hidden="true" class="icon_house"></span>
+               Dashboard
+            </a>
+          </li>
+          <li {% if view_url == "todays_reservations" or view_url == "past_reservations" or view_url == "upcoming_reservations" %}
+            class="active"
+            {% endif %}>
+            <a
+              href="#homeSubmenu"
+              class="accordion-toggle wave-effect"
+              data-toggle="collapse"
+              {% if view_url == "todays_reservations" or view_url == "past_reservations" or view_url == "upcoming_reservations" %}
+              aria-expanded="true"
+              {% else %}
+              aria-expanded="false"
+              {% endif %}
+              >
+              <span aria-hidden="true" class="icon_calendar"></span>
+              Reservations
+            </a>
+            <ul
+              class="collapse list-unstyled inside-level {% if view_url == "todays_reservations" or view_url == "past_reservations" or view_url == "upcoming_reservations" %}show{% endif %}"
+              id="homeSubmenu"
+              data-parent="#accordion"
+              >
+              <li>
+                <a href="{% url 'todays_reservations' %}" {% if view_url == "todays_reservations" %} style="background:#00000012" {% endif %}>
+                  <i class="ti-control-stop m-r-10"></i> Today's Reservations
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'upcoming_reservations' %}" {% if view_url == "upcoming_reservations" %} style="background:#00000012" {% endif %}>
+                  <i class="ti-control-stop m-r-10"></i> Upcoming Reservations
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'past_reservations' %}" {% if view_url == "past_reservations" %} style="background:#00000012" {% endif %}>
+                  <i class="ti-control-stop m-r-10"></i> Past Reservations
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li {% if view_url == "admin_menu_list" %}class="active"{% endif %}>
+            <a href="{% url 'admin_menu_list' %}" class="wave-effect">
+              <span aria-hidden="true" class="icon_clipboard"></span>
+               Food Menu
+            </a>
+          </li>
+          {% if request.user.is_superuser %}
+          <li {% if view_url == "all_admins" %}class="active"{% endif %}>
+            <a href="{% url 'all_admins' %}" class="wave-effect">
+              <span aria-hidden="true" class="icon_profile"></span>
+               Admins
+            </a>
+          </li>
+          {% endif %}
+          <li>
+            <a href="{% url 'index' %}" class="wave-effect">
+              <span aria-hidden="true" class="icon_globe-2"></span>
+               View Site
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'admin_logout' %}" class="wave-effect">
+              <span aria-hidden="true" class="icon_puzzle"></span>
+               Logout
+            </a>
+          </li>
+        </ul>
+      </nav>
+      {% endif %}
+      {% endwith %}
+
+      {% block content %}
+      {% endblock content %}
+    </div>
+
+
+    <!-- Scritps -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+        });
+      });
+    </script>
+  </body>
+</html>

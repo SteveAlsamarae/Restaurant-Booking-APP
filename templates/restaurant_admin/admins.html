@@ -1,0 +1,100 @@
+{% extends 'restaurant_admin/_base.html' %} 
+{% load crispy_forms_tags %}
+
+{% block title %}Restaurant Admins{% endblock %}
+
+{% block content %}
+
+<div class="container content-area">
+  {% include "_includes/message.html" %}
+  <div class="row text-center">
+  <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="panel">
+        <div class="m-b-15">
+          <div style="display:flex;justify-content: space-between;align-items: center;">
+            <h6>Princess Restaurant Admins</h6>
+            <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#TableModalCenter">Add Admin</a>
+          </div>
+          <hr />
+        </div>
+        <div class="table-responsive">
+          {% if restaurant_admins %}
+          <table class="table table-bordered">
+            <tr>
+              <th>Avatar</th>
+              <th>Admin Name</th>
+              <th>Role</th>
+              <th>Phone</th>
+              <th>Is Active</th>
+              <th>Action</th>
+            </tr>
+            {% for admin in restaurant_admins %}
+            <tr>
+              <td>
+                <img src="{{ admin.get_admin_avatar_url }}" alt="{{ admin.name }}" class="img-circle" width="50" height="50">
+              </td>
+              <td>{{ admin.name }}</td>
+              <td>
+                {{ admin.role }}
+              </td>
+              <td>
+                  {{ admin.phone }}
+              </td>
+              <td>
+                  {% if admin.is_active %}
+                  <span class="badge badge-success">Active</span>
+                  {% else %}
+                  <span class="badge badge-danger">Inactive</span>
+                  {% endif %}
+              </td>
+              <td>
+                  <a href="{% url 'update_admin' username=admin.user.username %}" class="text-decoration-none text-info">
+                      <span aria-hidden="true" class="icon_pencil-edit"></span>
+                  </a>
+                  &nbsp;
+                  <a href="{% url 'delete_admin' username=admin.user.username %}" class="text-decoration-none text-danger">
+                      <span aria-hidden="true" class="icon_trash"></span>
+                  </a>
+                
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <h4>No Restaurant Admin Found!</h4>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="TableModalCenter" tabindex="-1" role="dialog" aria-labelledby="TableModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TableModalLongTitle">Add Admin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" id="id_login" autocomplete="off" enctype="multipart/form-data" action="{% url 'admin_add' %}">
+          {% csrf_token %}
+          {{form.0|crispy}}
+          {{form.1|crispy}}
+        </div>
+        <div class="modal-footer form-group">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input class="btn btn-md btn-info" type="submit" value="Add Admin" id="submit-contact">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById('div_id_is_active').classList.add('ml-4')
+</script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'restaurant_admin/_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Update Admin{% endblock title %}
+
+{% block content %}
+<div class="container content-area">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        {% include "_includes/message.html" %}
+        <div class="panel">
+            <form method="post" id="id_update" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.0|crispy}}
+                {{form.1|crispy}}
+                <div class="form-group text-center">
+                    <input class="btn btn-md btn-info" type="submit" value="Update" id="submit-contact">
+                    <a class="btn btn-md btn-outline-dark" href="{% url 'admin_dashboard' %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  document.getElementById('div_id_is_active').classList.add('ml-4')
+  </script>
+{% endblock %}
