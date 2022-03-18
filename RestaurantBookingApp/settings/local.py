@@ -3,7 +3,7 @@ from .base import *
 from pathlib import Path
 
 # Build paths : BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 ALLOWED_HOSTS = ["*"]
