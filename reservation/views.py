@@ -450,7 +450,10 @@ def cancel_reservation_view(request, reservation_id):
 
 @login_required
 def user_reservations_view(request):
-    reservations = ReservationModel.objects.filter(customer=request.user)
+    reservations = ReservationModel.objects.filter(
+        customer=request.user, reservation_date__gte=timezone.now().date()
+    )
+
     return render(
         request, "reservation/user_reservations.html", {"reservations": reservations}
     )
