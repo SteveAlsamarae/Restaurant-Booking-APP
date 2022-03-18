@@ -1,0 +1,13 @@
+[
+  {
+    "model": "reservation.restaurantmodel",
+    "pk": 1,
+    "fields": {
+      "name": "Prince Restaurant",
+      "opening_hour": "10:00",
+      "closing_hour": "20:00",
+      "email": "contact@prince_rx.com",
+      "contact_number": "01234567891"
+    }
+  }
+]
