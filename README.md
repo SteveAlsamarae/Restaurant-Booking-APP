@@ -245,13 +245,6 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 
 ![admin-reservation-view](readme/src/images/admin-reservation-view.png)
 </p>
-<details>
-<summary>Reservations (View Reservations page)</summary>
-<p align="center">
-
-![admin-reservation-view](readme/src/images/admin-reservation-view.png)
-</p>
-</details>
 </details>
 
 ### Admin Food Menu Page
@@ -293,7 +286,7 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 <summary>Restaurant Admins</summary>
 <p align="center">
 
-![admins](readme/src/images/admin.png)
+![admins](readme/src/images/admins.png)
 </p>
 <summary>Add Restaurant Admin</summary>
 <p align="center">
@@ -318,3 +311,89 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 ![admin-login](readme/src/images/admin-login.png)
 </p>
 </details>
+
+## User Stories
+
+### Guest User - user is not logged in
+
+- Can browse the home/index page and view some of the food menus.
+- User can send direct messages or contact the restaurant.
+- Users can view restaurant information.
+- Can browse and view all the food items the restaurant is offering.
+- User can signup into the system to become a customer.
+  
+### Customer - user is logged in
+
+- Signed up user can log in to the system.
+- User can make a reservation.
+- User can make multiple table reservations.
+- User can cancel the upcoming reservation.
+- User can view all the pages that a guest user can.
+- User can view the successful reservations by making him.
+- A user can not make a duplicate reservation.
+- A customer can not access the admin dashboard.
+
+### Restaurant Admin - user is logged in as restaurant-admin
+
+- Restaurant-admin can access the radmin-login page.
+- Restaurant-admin can access the admin dashboard.
+- Admin can manage upcoming reservations.
+- Admin can cancel reservations of a customer.
+- Admin can delete past reservations.
+- Admin can update restaurant information.
+- Admin can add, update and delete tables.
+- Admin can add, update and delete food menus.
+
+### Super Admin - user is logged in as super-admin
+
+- A super-admin get all the functionalities a restaurant admin has.
+- Super admin can add, update and delete restaurant-admin.
+- Super admin can manage restaurant admins.
+- Super admin can view all the pages.
+- Only a super admin has access to admins' management pages.
+
+## Tools & Technologies
+
+#### Languages 
+
+- Python
+- Javascript
+- HTML
+- CSS
+
+#### Libraries and Frameworks
+
+- Django
+- Django allauth
+- Jquery
+- Validate.js
+- Bootstrap
+
+#### Databases and Storage
+
+- SQLite: Used for local development.
+- PostgresSQL: Used for production.
+
+#### Development Tools
+
+- Git: Version controlling.
+- Github: Repository hosting.
+- Git Pod
+- Debug toolbar
+- Django extentions
+- Pylint
+- Flake8
+- JSlint
+- Prettier
+- Neovim
+- VS Code
+- Iterm2
+
+#### Others
+
+- [Google fonts](http://Fonts.google.com)
+- [Jshint.com/](https://jshint.com/) - Used for validation of Javascript code.
+- [Validator.w3.org](http://Validator.w3.org)- Used for validation of HTML code.
+- [PyGraphviz](https://pygraphviz.github.io/) - Used for generating database schema.
+- Google Chrome DevTools - Used for testing website responsiveness.
+
