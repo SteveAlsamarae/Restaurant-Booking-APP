@@ -2,7 +2,7 @@
 
 ![PrinceResturant_Image](readme/src/images/restaurant_thumbnail.png)
 
-<div style="text-align:center">[Link to Live Project](#)</div>
+[Link to Live Project](#)
 
 ## Purpose
 
@@ -31,6 +31,8 @@ For this application we've used SQL database(SQLlite for development & PostgresD
 
 Following diagram shows the database models and the relationship between them.
 
+![Database-Schema](readme/src/images/db_schema.png)
+
 ## Wireframes
 
 Following wireframes are used during the development process.
@@ -54,11 +56,13 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 - In a smaller display, all links will be contained in a hamburger dropdown icon.
 
 <details>
-    <summary>Home (View Home page)</summary>
-    <p align="center">
-        ![home-page](readme/src/images/home-page.png)
-    </p>
+<summary>Home (View Home page)</summary>
+<p align="center">
+
+![Image](readme/src/images/home-page.png)
+</p>
 </details>
+
 
 ### Food Menu Page
 
@@ -85,10 +89,11 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 - Contains register button on the page.
 
 <details>
-    <summary>Login Menu (View Login Menu page)</summary>
-    <p align="center">
-        ![login](readme/src/images/login.png)
-    </p>
+<summary>Login Menu (View Login Menu page)</summary>
+<p align="center">
+
+![Image](readme/src/images/login.png)
+</p>
 </details>
 
 ### Signup Page
@@ -101,10 +106,11 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 - Contains login link on the page.
 
 <details>
-    <summary>Signup Menu (View Signup Menu page)</summary>
-    <p align="center">
-        ![signup](readme/src/images/signup.png)
-    </p>
+<summary>Signup Menu (View Signup Menu page)</summary>
+<p align="center">
+
+![signup](readme/src/images/signup.png)
+</p>
 </details>
 
 ### Profile Update Page
@@ -119,10 +125,11 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 - Redirect to profile update after succesful submission.
 
 <details>
-    <summary>Profile Update Menu (View Profile Update Menu page)</summary>
-    <p align="center">
-        ![update-profile](readme/src/images/update-profile.png)
-    </p>
+<summary>Profile Update Menu (View Profile Update Menu page)</summary>
+<p align="center">
+
+![update-profile](readme/src/images/update-profile.png)
+</p>
 </details>
 
 ### Make Reservation Page
@@ -140,10 +147,11 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 - On duplicate reservation, user redirect to the same page with error message.
 
 <details>
-    <summary>Make Reservation (View Make Reservation page)</summary>
-    <p align="center">
-        ![make-reservation](readme/src/images/make-reservation.png)
-    </p>
+<summary>Make Reservation (View Make Reservation page)</summary>
+<p align="center">
+
+![make-reservation](readme/src/images/make-reservation.png)
+</p>
 </details>
 
 ### User Reservation Page
@@ -158,10 +166,11 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 - If user has no reservation a "No reservation" message will be displayed on the page.
 
 <details>
-    <summary>User Reservation (View User Reservation page)</summary>
-    <p align="center">
-        ![user-reservation](readme/src/images/user-reservation.png)
-    </p>
+<summary>User Reservation (View User Reservation page)</summary>
+<p align="center">
+
+![user-reservation](readme/src/images/user-reservation.png)
+</p>
 </details>
 
 ### Contact Us Page
@@ -173,8 +182,139 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 - After successful submission user will be redirected to the same page.
 
 <details>
-    <summary>Contact Us (View Contact Us page)</summary>
-    <p align="center">
-        ![contact-us](readme/src/images/contact-us.png)
-    </p>
+<summary>Contact Us (View Contact Us page)</summary>
+<p align="center">
+
+![contact-us](readme/src/images/contact-us.png)
+</p>
+</details>
+
+### Admin Dashboard Page
+
+> Login requied
+> User must be admin
+
+*URL: `{host}/reservations/admin/dashboard`*
+
+- Contains the restaurant information(comes from backend).
+- Admin can update restaurant information.
+- Contains all the tables with information, next reservation and action button.
+- Admin can add, upade and delete table.
+
+<details>
+<summary>Admin Dashboard (View Admin Dashboard page)</summary>
+<p align="center">
+
+![admin-dashboard](readme/src/images/admin-dashboard.png)
+</p>
+<summary>Add Table (View Add Table page)</summary>
+<p align="center">
+
+![admin-add-table](readme/src/images/admin-add-table.png)
+</p>
+<summary>Add Table Success Message(View Success Message)</summary>
+<p align="center">
+
+![success-table-creation](readme/src/images/success-table-creation.png)
+</p>
+</details>
+
+<details>
+<summary>Update Restaurant</summary>
+<p align="center">
+
+![update-restaurant](readme/src/images/update-restaurant.png)
+</p>
+</details>
+
+### Admin Reservations Page
+
+> Login requied
+> User must be admin
+
+*URL: `{host}/reservations/admin/{}/`todays|upcoming|past*
+
+- Admin can manage all reservations on this page.
+- Admin can view and cancel todays reservations.
+- Admin can view and cancel upcoming reservations.
+- Admin can view and cancel past reservations.
+
+<details>
+<summary>Reservations (View Reservations page)</summary>
+<p align="center">
+
+![admin-reservation-view](readme/src/images/admin-reservation-view.png)
+</p>
+<details>
+<summary>Reservations (View Reservations page)</summary>
+<p align="center">
+
+![admin-reservation-view](readme/src/images/admin-reservation-view.png)
+</p>
+</details>
+</details>
+
+### Admin Food Menu Page
+
+> Login requied
+> User must be admin
+
+*URL: `{host}/food-menu/admin/`*
+
+- An admin can manage all the created menu items on this page.
+- A page with all the created food menus.
+- Admin can update and delete food menu.
+
+<details>
+<summary>Admin Food Menu (View Admin Food Menu page)</summary>
+<p align="center">
+
+![admin-food-menu](readme/src/images/admin-food-menu.png)
+</p>
+<summary>Admin Food Menu (View Admin Food Menu page)</summary>
+<p align="center">
+
+![add-food-item](readme/src/images/add-food-item.png)
+</p>
+</details>
+
+### Admins Page
+
+> Login requied
+> User must be super_admin
+
+*URL: `{host}/reservations/admin/`*
+
+- Only a super admin can manage restaurant admins.
+- Super admin can add, update and delete a restaurant admin.
+- Restaurant admin can able to manage the restaurant.
+
+<details>
+<summary>Restaurant Admins</summary>
+<p align="center">
+
+![admins](readme/src/images/admin.png)
+</p>
+<summary>Add Restaurant Admin</summary>
+<p align="center">
+
+![add-admin](readme/src/images/add-admin.png)
+</p>
+</details>
+
+### Admins Login Page
+
+> Only super_admin and restaurant admin can login
+
+*URL: `{host}/radmin/login/`*
+
+- This page contains admin login form.
+- Successful login will redirect to admin dashboard.
+
+<details>
+<summary>Restaurant Admin Login</summary>
+<p align="center">
+
+![admin-login](readme/src/images/admin-login.png)
+</p>
 </details>
