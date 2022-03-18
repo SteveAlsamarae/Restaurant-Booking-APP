@@ -9,9 +9,7 @@ cloudinary_python.txt
 
 #project specefic
 media/avatars/**
-!media/avatars/.gitkeep
 media/menu_images/**
-!media/menu_images/.gitkeep
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -20,6 +18,8 @@ __pycache__/
 
 # C extensions
 *.so
+
+**/.DS_Store
 
 # Distribution / packaging
 .Python
