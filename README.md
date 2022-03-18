@@ -472,3 +472,72 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+## Production
+
+## Testing
+
+This projects contains unit test for each app as well as test for templates.
+
+1. For testing all apps run,
+
+```bash
+python manage.py test
+```
+
+<details>
+<summary>Last Test Results</summary>
+
+![tests](readme/src/images/tests.png)
+</details>
+
+1. For testing users app run,
+
+```bash
+python manage.py test users
+```
+
+<details>
+<summary>Last Test Results for users app</summary>
+
+![tests](readme/src/images/test_users.png)
+</details>
+
+1. For testing food_menus app run,
+
+```bash
+python manage.py test food_menus
+```
+<details>
+<summary>Last Test Results for food_menus app</summary>
+
+![tests](readme/src/images/test_food_menus.png)
+</details>
+
+1. For testing reservation app run,
+
+```bash
+python manage.py test reservation
+```
+
+<details>
+<summary>Last Test Results for reservation</summary>
+
+![tests](readme/src/images/test_reservation.png)
+</details>
+
+1. For testing contact app and templates run,
+
+> Test for templates is in contact app's tests folder.
+
+```bash
+python manage.py test contact
+```
+<details>
+<summary>Last Test Results for contact & templates</summary>
+
+![tests](readme/src/images/test_contact.png)
+</details>
+
+## CREDITS
+
+All the images used in the website are taken from [Pexels](https://www.pexels.com/), [Pixabay](https://www.pixabay.com/) and [Unslapsh](https://www.unsplash.com/)
