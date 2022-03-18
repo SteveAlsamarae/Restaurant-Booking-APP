@@ -354,7 +354,7 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 
 ## Tools & Technologies
 
-#### Languages 
+#### Languages
 
 - Python
 - Javascript
@@ -396,4 +396,79 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 - [Validator.w3.org](http://Validator.w3.org)- Used for validation of HTML code.
 - [PyGraphviz](https://pygraphviz.github.io/) - Used for generating database schema.
 - Google Chrome DevTools - Used for testing website responsiveness.
+
+## Error Handling
+
+Errors are handled during the development process.
+
+- Unit tested each app to handle unexpected errors.
+- Manually tested frontend pages to avoid client-side errors.
+- Tested templet syntax error to handle template syntax errors.
+- Used console to handle known errors.
+- Used Chrome DevTools.
+  
+## Local Development
+
+> ❗Make sure You have python3 and pip installed on your machine.
+
+1. Create a folder where you want to clone the project and cd into it.
+
+
+> ℹ️ *Optional but better to use a virtual environment for every project.*
+
+If don’t have any virtual environment manager installed in your machine then install one. (I will use pipenv)
+
+For installing pipenv run
+
+```bash
+pip install pipenv
+```
+
+1. Now clone the project and navigate to BinBlogger-master
+
+```bash
+git clone https://github.com/SteveAlsamarae/Restaurant-Booking-APP.git .
+```
+
+1. Install all the dependencies for the project.
+
+```bash
+pip install -r requirements/local.txt
+```
+
+1. Activate the virtual environment
+
+```bash
+pipenv shell
+```
+
+1. Make sure you are in the project's root directory then run the following command in your terminal.
+
+```bash
+python manage.py create_env
+```
+
+1. Make sure in `manage.py`, you are using `RestaurantBookingApp.settings.local` for local development and for production use `RestaurantBookingApp.settings.prod`.
+
+1. Now run the following command
+
+```bash
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py loaddata
+```
+
+1. Now create a superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+1. If all gone well you can now start the server
+
+```bash
+python manage.py runserver
+```
 
