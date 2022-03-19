@@ -1,4 +1,4 @@
-# **PrinceResturant - Restaurant Booking Application**
+# **Prince Booking - Restaurant Booking Application**
 
 ![PrinceResturant_Image](readme/src/images/restaurant_thumbnail.png)
 
@@ -6,9 +6,9 @@
 
 ## Purpose
 
-PrinceResturant is designed and developed to automate the booking system of the restaurant so that customer can book table online and the restaurant can grow their business.
+Prince Booking is designed and developed to automate the booking system of the restaurant so that customer can book table online and the restaurant can grow their business.
 
-PrinceResturant Application allows a small to medium size restaurant-business owner to extend their business to online and automate the reservation system. So that, people can know about the restaurant and see what's they are offering, besides they can also make reservations for them or their friends and family.
+Prince Booking Application allows a small to medium size restaurant-business owner to extend their business to online and automate the reservation system. So that, people can know about the restaurant and see what's they are offering, besides they can also make reservations for them or their friends and family.
 
 ## Strategies
 
