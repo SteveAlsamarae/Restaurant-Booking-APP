@@ -430,25 +430,25 @@ pip install pipenv
 git clone https://github.com/SteveAlsamarae/Restaurant-Booking-APP.git .
 ```
 
-1. Install all the dependencies for the project.
-
-```bash
-pip install -r requirements/local.txt
-```
-
 1. Activate the virtual environment
 
 ```bash
 pipenv shell
 ```
 
+1. Install all the dependencies for the project.
+
+```bash
+pip install -r requirements/local.txt
+```
+
+1. Make sure in `manage.py` and `RestaurantBookingApp/wsgi.py`, you are using `RestaurantBookingApp.settings.local` for local development and for production use `RestaurantBookingApp.settings.prod`.
+
 1. Make sure you are in the project's root directory then run the following command in your terminal.
 
 ```bash
 python manage.py create_env
 ```
-
-1. Make sure in `manage.py`, you are using `RestaurantBookingApp.settings.local` for local development and for production use `RestaurantBookingApp.settings.prod`.
 
 1. Now run the following command
 
@@ -457,7 +457,7 @@ python manage.py makemigrations
 
 python manage.py migrate
 
-python manage.py loaddata
+python manage.py loaddata restaurant.json
 ```
 
 1. Now create a superuser
