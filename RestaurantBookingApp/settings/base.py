@@ -1,5 +1,8 @@
 from pathlib import Path
 import environ
+import os
+
+from django.core.exceptions import ImproperlyConfigured
 
 
 # Build paths : BASE_DIR / 'subdir'.
@@ -11,11 +14,18 @@ env = environ.Env()
 env.read_env(BASE_DIR / ".env")
 
 # False if not in os.environ because of casting above
-DEBUG = env("DEBUG")
+try:
+    DEBUG = env("DEBUG")
+except ImproperlyConfigured:
+    DEBUG = os.environ.get("DEBUG")
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
-SECRET_KEY = env("SECRET_KEY")
+try:
+    SECRET_KEY = env("SECRET_KEY")
+except ImproperlyConfigured:
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+
 
 # APPS
 DJANGO_APPS = [

@@ -3,7 +3,7 @@ from django.core.management.utils import get_random_secret_key
 from django.conf import settings
 
 
-BASE_DIR = settings.BASE_DIR.parent
+BASE_DIR = settings.BASE_DIR
 
 
 class Command(BaseCommand):

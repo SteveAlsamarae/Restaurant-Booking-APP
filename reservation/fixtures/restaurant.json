@@ -3,7 +3,7 @@
     "model": "reservation.restaurantmodel",
     "pk": 1,
     "fields": {
-      "name": "Prince Restaurant",
+      "name": "Prince Booking",
       "opening_hour": "10:00",
       "closing_hour": "20:00",
       "email": "contact@prince_rx.com",
