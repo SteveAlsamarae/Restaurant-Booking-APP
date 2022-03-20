@@ -2,7 +2,7 @@
 
 ![PrinceResturant_Image](readme/src/images/restaurant_thumbnail.png)
 
-[Link to Live Project](#)
+[Link to Live Project](https://prince-booking.herokuapp.com/)
 
 ## Purpose
 
@@ -35,7 +35,9 @@ Following diagram shows the database models and the relationship between them.
 
 ## Wireframes
 
-Following wireframes are used during the development process.
+![Wireframe](readme/src/images/wireframe.png)
+![Wireframe2](readme/src/images/wireframe2.png)
+![Wireframe3](readme/src/images/wireframe 3.png)
 
 ## Features & Details
 
@@ -406,7 +408,24 @@ Errors are handled during the development process.
 - Tested templet syntax error to handle template syntax errors.
 - Used console to handle known errors.
 - Used Chrome DevTools.
-  
+
+## Heroku Deployment
+
+1. Log in to Heroku
+Go to https://www.heroku.com/ and login/signup
+
+2. Create a new app
+Give a unique name to your app, leave other options as it is and click on the Create app button.
+
+3. Connect to GitHub
+
+4. Find your repo
+Enter your repo name and click on the search button.
+
+5. Connect to your repo
+Find your repo and click on the Connect button.
+
+
 ## Local Development
 
 > ❗Make sure You have python3 and pip installed on your machine.
@@ -539,5 +558,13 @@ python manage.py test contact
 </details>
 
 ## CREDITS
-
-All the images used in the website are taken from [Pexels](https://www.pexels.com/), [Pixabay](https://www.pixabay.com/) and [Unslapsh](https://www.unsplash.com/)
+- Code institute 
+- Code Institute Slack Channel 
+- Code Institute Mentor Sandeep
+- Udemy
+- CS Dojo
+- Telusko
+- [Pexels](https://www.pexels.com/)
+- [Pixabay](https://www.pixabay.com/)
+- [Unslapsh](https://www.unsplash.com/)
+- [Unslapsh](https://id.heroku.com/login/)
