@@ -1,6 +1,5 @@
 jQuery(function ($) {
 	"use strict";
-	$("form#wrapped").attr("action", "phpmailer/reserve_template_email.php");
 	$("#wizard_container")
 	  .wizard({
 		stepsWrapper: "#wrapped",
