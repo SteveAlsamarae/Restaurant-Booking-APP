@@ -1,7 +1,7 @@
 {% load static %}
 
 {% with request.resolver_match.url_name as view_url %}
-{% if view_url != 'account_login' and view_url != 'account_signup' and view_url != 'account_logout' %}
+{% if view_url != 'account_login' and view_url != 'account_signup' and view_url != 'account_logout' and view_url != 'user_reservations' %}
 <footer>
     <div class="frame black"></div>
     <div class="container">
