@@ -102,7 +102,7 @@ def admin_login_view(request):
                     return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
         else:
             messages.error(request, "Invalid credentials")
-            return redirect("admin_login")
+            return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
     else:
         form = RestaurantAdminLoginForm()
 
