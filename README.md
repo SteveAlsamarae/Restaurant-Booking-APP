@@ -37,7 +37,7 @@ Following diagram shows the database models and the relationship between them.
 
 ![Wireframe](readme/src/images/wireframe.png)
 ![Wireframe2](readme/src/images/wireframe2.png)
-![Wireframe3](readme/src/images/wireframe 3.png)
+![Wireframe3](readme/src/images/wireframe3.png)
 
 ## Features & Details
 
@@ -77,8 +77,9 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 <details>
     <summary>Food Menu (View Food Menu page)</summary>
     <p align="center">
-        ![food-menu](readme/src/images/food-menu.png)
-    </p>
+
+![Image](readme/src/images/food-menu.png)
+</p>
 </details>
 
 ### Login Page
@@ -314,6 +315,20 @@ A detailed breakdown of all the features of the PrinceRestaurant Booking Applica
 </p>
 </details>
 
+### 404 Page
+
+*URL: `{host}/{any_invalid_url}`*
+
+- When user request with a invalid url this page will be shown.
+
+<details>
+<summary>404 Page</summary>
+<p align="center">
+
+![admin-login](readme/src/images/404.png)
+</p>
+</details>
+
 ## User Stories
 
 ### Guest User - user is not logged in
@@ -409,23 +424,6 @@ Errors are handled during the development process.
 - Used console to handle known errors.
 - Used Chrome DevTools.
 
-## Heroku Deployment
-
-1. Log in to Heroku
-Go to https://www.heroku.com/ and login/signup
-
-2. Create a new app
-Give a unique name to your app, leave other options as it is and click on the Create app button.
-
-3. Connect to GitHub
-
-4. Find your repo
-Enter your repo name and click on the search button.
-
-5. Connect to your repo
-Find your repo and click on the Connect button.
-
-
 ## Local Development
 
 > ❗Make sure You have python3 and pip installed on your machine.
@@ -493,6 +491,22 @@ python manage.py runserver
 
 ## Production
 
+### Heroku Deployment
+
+1. Log in to Heroku
+Go to `https://www.heroku.com/` and login/signup
+
+2. Create a new app
+Give a unique name to your app, leave other options as it is and click on the Create app button.
+
+3. Connect to GitHub
+
+4. Find your repo
+Enter your repo name and click on the search button.
+
+5. Connect to your repo
+Find your repo and click on the Connect button.
+
 ## Testing
 
 This projects contains unit test for each app as well as test for templates.
@@ -557,9 +571,23 @@ python manage.py test contact
 ![tests](readme/src/images/test_contact.png)
 </details>
 
+## Code Changes
+
+- Fixed production issues making `Debug = False` and updating whitenoise settings. (#27)
+- Added production logging in base settings. (#27)
+- Updated database url.
+- Fixed reverse url bugs for radmin login in admin_login_view. (#28)
+- Added initial migrations files for heroku deployment.
+- Added shortcut icon favicon.ico for site icon.
+- Added custom error page `404.html`. (#29)
+- Updated JS files to validate using Jslint and Jshint. (#30)
+- Fixed frontend issues for user reservations & confirm page.
+- Updated README.md for current changes.
+
 ## CREDITS
-- Code institute 
-- Code Institute Slack Channel 
+
+- Code institute
+- Code Institute Slack Channel
 - Code Institute Mentor Sandeep
 - Udemy
 - CS Dojo
