@@ -1,13 +1,12 @@
 import os
-from .base import *
 
 import dj_database_url
 
+from .base import *
 
-DEBUG = False
 
-if not SECRET_KEY:
-    SECRET_KEY = os.environ.get("SECRET_KEY")
+if DEBUG:
+    DEBUG = False
 
 INSTALLED_APPS += [
     "whitenoise.runserver_nostatic",
@@ -18,7 +17,7 @@ MIDDLEWARE += [
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+WHITENOISE_MANIFEST_STRICT = False
 
 ALLOWED_HOSTS = ["0.0.0.0", "prince-booking.herokuapp.com"]
 
@@ -52,8 +51,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # This is just for test purpose to avoid sending emails
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+DATABASES = {"default": dj_database_url.config(conn_max_age=600)}
+# DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
+COMPRESS_ENABLED = os.environ.get("COMPRESS_ENABLED", False)
